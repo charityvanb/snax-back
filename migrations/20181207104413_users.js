@@ -1,11 +1,10 @@
-
 exports.up = function(knex, Promise) {
-	return knex.schema.createTable('users', (entityInTable) => {
-        entityInTable.increments('id')
-        entityInTable.string('fname')
-        entityInTable.string('lname')
-        entityInTable.string('email')
-        entityInTable.string('hashed_password')
+	return knex.schema.createTable('users', (user) => {
+        user.increments('id')
+        user.string('fname')
+        user.string('lname')
+        user.string('email')
+        user.string('hashed_password')
 	});
 };
 

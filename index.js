@@ -12,6 +12,10 @@ app.get('/', (req, res) => {
     queries.listAll().then(response => res.send(response))
 })
 
+app.get('/users', (req, res) => {
+    queries.listAllUsers().then(response => res.send(response))
+})
+
 app.get('/:id', (req, res) => {
     let id = req.params.id
     queries.getById(id).then(response => res.send(response))

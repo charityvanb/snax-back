@@ -19,5 +19,9 @@ module.exports = {
 
     updateSnack(id, snack) {
         return database('snacks').where('id', id).update(snack).returning('*')
-    }
+    }, 
+
+    listAllUsers() {
+        return database('users')
+    },
 }
