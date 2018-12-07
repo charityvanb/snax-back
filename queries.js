@@ -24,4 +24,20 @@ module.exports = {
     listAllUsers() {
         return database('users')
     },
+
+    getByIdUsers(id) {
+        return database('users').where({id: id}).first() 
+    }, 
+
+    createUser(newUser) {
+        return database('users').insert(newUser).returning('*')
+    }, 
+
+    deleteUser(id) {
+        return database('users').where('id', id).delete()
+    }, 
+
+    updateUser(id, user) {
+        return database('users').where('id', id).update(user).returning('*')
+    }, 
 }

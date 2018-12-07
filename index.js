@@ -21,19 +21,39 @@ app.get('/:id', (req, res) => {
     queries.getById(id).then(response => res.send(response))
 })
 
+app.get('/users/:id', (req, res) => {
+    let id = req.params.id
+    queries.getByIdUsers(id).then(response => res.send(response))
+})
+
 app.post('/', (req, res) => {
     queries.createSnack(req.body).then(response => res.send(response[0]))
 })
 
+app.post('/users', (req, res) => {
+    queries.createUser(req.body).then(response => res.send(response[0]))
+})
+
 app.delete('/:id', (req, res) => {
     let id = req.params.id
-    queries.deleteSnack(id).then(res.sendStatus(204))
+    queries.deleteUser(id).then(res.sendStatus(204))
+})
+
+app.delete('/users/:id', (req, res) => {
+    let id = req.params.id
+    queries.deleteUser(id).then(res.sendStatus(204))
 })
 
 app.put('/:id', (req, res) => {
     let id = req.params.id
     let body = req.body 
     queries.updateSnack(id, body).then(data => res.json(data[0]))
+})
+
+app.put('/users/:id', (req, res) => {
+    let id = req.params.id
+    let body = req.body 
+    queries.updateUser(id, body).then(data => res.json(data[0]))
 })
 
 app.use((req, res, next) => {
