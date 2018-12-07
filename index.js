@@ -21,13 +21,13 @@ app.get('/reviews', (req, res) => {
     queries.listAllReviews().then(response => res.send(response))
 })
 
-app.get('/reviews', (req, res) => {
-    database('reviews')
-    .join('users', 'users.id', '=', reviews.user_id)
-    .then(function(data) {
-        res.json(data)
-    })
-})
+// app.get('/reviews', (req, res) => {
+//     database('reviews')
+//     .join('users', 'users.id', '=', reviews.user_id)
+//     .then(function(data) {
+//         res.json(data)
+//     })
+// })
 
 app.get('/:id', (req, res) => {
     let id = req.params.id
