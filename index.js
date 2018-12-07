@@ -3,11 +3,12 @@ const app = express()
 const queries = require('./queries')
 const bodyParser = require('body-parser')
 const cors = require('cors')
-const database = require('./database-connection')
 const port = process.env.PORT || 3005
 
 app.use(bodyParser.json())
 app.use(cors())
+
+
 
 app.get('/', (req, res) => {
     queries.listAll().then(response => res.send(response))
@@ -51,6 +52,8 @@ app.post('/', (req, res) => {
 app.post('/users', (req, res) => {
     queries.createUser(req.body).then(response => res.send(response[0]))
 })
+
+app.options('/reviews', cors()) 
 
 app.post('/reviews', (req, res) => {
     queries.createReview(req.body).then(response => res.send(response[0]))
