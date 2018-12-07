@@ -3,6 +3,7 @@ const app = express()
 const queries = require('./queries')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const database = require('./database-connection')
 const port = process.env.PORT || 3005
 
 app.use(bodyParser.json())
@@ -18,6 +19,14 @@ app.get('/users', (req, res) => {
 
 app.get('/reviews', (req, res) => {
     queries.listAllReviews().then(response => res.send(response))
+})
+
+app.get('/reviews', (req, res) => {
+    database('reviews')
+    .join('users', 'users.id', '=', reviews.user_id)
+    .then(function(data) {
+        res.json(data)
+    })
 })
 
 app.get('/:id', (req, res) => {

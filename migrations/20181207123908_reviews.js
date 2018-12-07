@@ -5,9 +5,9 @@ exports.up = function(knex, Promise) {
         review.string('text', [500])
         review.integer('rating')
         review.integer('snack_id')
-        // review.foreign('snack_id').references('snack.id')
+        review.foreign('snack_id').references('snacks.id')
         review.integer('user_id')
-        // review.foreign('user_id').references('user.id')
+        review.foreign('user_id').references('users.id')
     })
 };
 
