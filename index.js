@@ -8,8 +8,6 @@ const port = process.env.PORT || 3005
 app.use(bodyParser.json())
 app.use(cors())
 
-
-
 app.get('/', (req, res) => {
     queries.listAll().then(response => res.send(response))
 })
