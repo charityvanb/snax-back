@@ -40,4 +40,24 @@ module.exports = {
     updateUser(id, user) {
         return database('users').where('id', id).update(user).returning('*')
     }, 
+
+    listAllReviews() {
+        return database('reviews')
+    },
+
+    getByIdReviews(id) {
+        return database('reviews').where({id: id}).first() 
+    }, 
+
+    createReview(newReview) {
+        return database('reviews').insert(newReview).returning('*')
+    }, 
+
+    deleteReview(id) {
+        return database('reviews').where('id', id).delete()
+    }, 
+
+    updateReview(id, review) {
+        return database('reviews').where('id', id).update(review).returning('*')
+    }, 
 }

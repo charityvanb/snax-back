@@ -16,6 +16,10 @@ app.get('/users', (req, res) => {
     queries.listAllUsers().then(response => res.send(response))
 })
 
+app.get('/reviews', (req, res) => {
+    queries.listAllReviews().then(response => res.send(response))
+})
+
 app.get('/:id', (req, res) => {
     let id = req.params.id
     queries.getById(id).then(response => res.send(response))
@@ -26,12 +30,21 @@ app.get('/users/:id', (req, res) => {
     queries.getByIdUsers(id).then(response => res.send(response))
 })
 
+app.get('/reviews/:id', (req, res) => {
+    let id = req.params.id
+    queries.getByIdReviews(id).then(response => res.send(response))
+})
+
 app.post('/', (req, res) => {
     queries.createSnack(req.body).then(response => res.send(response[0]))
 })
 
 app.post('/users', (req, res) => {
     queries.createUser(req.body).then(response => res.send(response[0]))
+})
+
+app.post('/reviews', (req, res) => {
+    queries.createReview(req.body).then(response => res.send(response[0]))
 })
 
 app.delete('/:id', (req, res) => {
@@ -44,6 +57,11 @@ app.delete('/users/:id', (req, res) => {
     queries.deleteUser(id).then(res.sendStatus(204))
 })
 
+app.delete('/reviews/:id', (req, res) => {
+    let id = req.params.id
+    queries.deleteReview(id).then(res.sendStatus(204))
+})
+
 app.put('/:id', (req, res) => {
     let id = req.params.id
     let body = req.body 
@@ -54,6 +72,12 @@ app.put('/users/:id', (req, res) => {
     let id = req.params.id
     let body = req.body 
     queries.updateUser(id, body).then(data => res.json(data[0]))
+})
+
+app.put('/reviews/:id', (req, res) => {
+    let id = req.params.id
+    let body = req.body 
+    queries.updateReview(id, body).then(data => res.json(data[0]))
 })
 
 app.use((req, res, next) => {
