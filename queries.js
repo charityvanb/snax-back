@@ -5,19 +5,19 @@ module.exports = {
         return database('snacks')
     },
 
-    // getById(id) {
-    //     return database('snacks').where({id: id}).first() 
-    // }, 
+    getById(id) {
+        return database('snacks').where({id: id}).first() 
+    }, 
 
-    // createSnack(newSnack) {
-    //     return database('snacks').insert(newSnack).returning('*')
-    // }, 
+    createSnack(newSnack) {
+        return database('snacks').insert(newSnack).returning('*')
+    }, 
 
-    // deleteSnack(id) {
-    //     return database('snacks').where('id', id).delete()
-    // }, 
+    deleteSnack(id) {
+        return database('snacks').where('id', id).delete()
+    }, 
 
-    // updateSnack(id, snack) {
-    //     return database('snacks').where('id', id).update(snack).returning('*')
-    // }
+    updateSnack(id, snack) {
+        return database('snacks').where('id', id).update(snack).returning('*')
+    }
 }
