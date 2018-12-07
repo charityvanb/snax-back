@@ -9,12 +9,6 @@ const port = process.env.PORT || 3005
 app.use(bodyParser.json())
 app.use(cors())
 
-app.use('*', function (req, res) {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader('Access-Control-Allow-Methods', '*');
-    res.setHeader("Access-Control-Allow-Headers", "*");
-  });
-
 app.get('/', (req, res) => {
     queries.listAll().then(response => res.send(response))
 })
