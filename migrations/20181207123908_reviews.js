@@ -3,7 +3,7 @@ exports.up = function(knex, Promise) {
         review.increments('id')
         review.string('title')
         review.string('text', [500])
-        review.integer('rating')
+        review.decimal('rating', null)
         review.integer('snack_id')
         review.foreign('snack_id').references('snacks.id')
         review.integer('user_id')
